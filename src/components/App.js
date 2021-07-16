@@ -15,11 +15,11 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import AffirmDeletePopup from "./AffirmDeletePopup";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
-import ProtectedRoute from './ProtectedRoute';
-
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
+    React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -27,16 +27,22 @@ function App() {
   const [cards, setCards] = React.useState([]);
   const [selectedCard, setSelectedCard] = React.useState({});
 
-  const [isAffirmDeletePopupOpen, setAffirmDeletePopupOpen] = React.useState(false);
+  const [isAffirmDeletePopupOpen, setAffirmDeletePopupOpen] =
+    React.useState(false);
   const [cardToDelete, setCardToDelete] = React.useState({});
 
-  const [loadTextEditProfilePopup, setLoadTextEditProfilePopup] = React.useState("Сохранить");
-  const [loadTextEditAvatarPopup, setLoadTextEditAvatarPopup] = React.useState("Сохранить");
-  const [loadTextAddPlacePopup, setLoadTextAddPlacePopup] = React.useState("Создать");
-  const [loadTextAffirmDeletePopup, setLoadTextAffirmDeletePopup] = React.useState("Да");
+  const [loadTextEditProfilePopup, setLoadTextEditProfilePopup] =
+    React.useState("Сохранить");
+  const [loadTextEditAvatarPopup, setLoadTextEditAvatarPopup] =
+    React.useState("Сохранить");
+  const [loadTextAddPlacePopup, setLoadTextAddPlacePopup] =
+    React.useState("Создать");
+  const [loadTextAffirmDeletePopup, setLoadTextAffirmDeletePopup] =
+    React.useState("Да");
 
   const [isSuccessInfoToolTip, setIsSuccessInfoToolTip] = React.useState(null);
-  const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] = React.useState(false);
+  const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] =
+    React.useState(false);
 
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -159,10 +165,10 @@ function App() {
       });
   }
 
-  function closeInfoToolTipPopup(){
+  function closeInfoToolTipPopup() {
     closeAllPopups();
-    if(isSuccessInfoToolTip){
-      handleLogin({email: userEmail, password: userPassword});
+    if (isSuccessInfoToolTip) {
+      handleLogin({ email: userEmail, password: userPassword });
     }
   }
 
@@ -200,7 +206,8 @@ function App() {
   }, []);
 
   function handleRegister(data) {
-    auth.register(data)
+    auth
+      .register(data)
       .then((res) => {
         setUserEmail(res.data.email);
         setUserPassword(data.password);
@@ -210,11 +217,12 @@ function App() {
       .catch(() => {
         setIsSuccessInfoToolTip(false);
         setInfoToolTipPopupOpen(true);
-      })
+      });
   }
 
-  function handleLogin(data){
-    auth.login(data)
+  function handleLogin(data) {
+    auth
+      .login(data)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         handleCheckToken();
@@ -222,13 +230,14 @@ function App() {
       .catch(() => {
         setIsSuccessInfoToolTip(false);
         setInfoToolTipPopupOpen(true);
-      })
+      });
   }
 
-  function handleCheckToken(){
+  function handleCheckToken() {
     const jwt = localStorage.getItem("jwt");
-    if(jwt){
-      auth.checkToken(jwt)
+    if (jwt) {
+      auth
+        .checkToken(jwt)
         .then((res) => {
           setUserEmail(res.data.email);
           setIsLoggedIn(true);
@@ -238,15 +247,14 @@ function App() {
         .catch(() => {
           setIsSuccessInfoToolTip(false);
           setInfoToolTipPopupOpen(true);
-        })
-    } 
-    else {
+        });
+    } else {
       setIsLoading(false);
       return;
     }
   }
 
-  function handleSignOut(){
+  function handleSignOut() {
     setIsLoggedIn(false);
     history.push("/sign-in");
     localStorage.removeItem("jwt");
@@ -259,14 +267,16 @@ function App() {
   return (
     <div className="container">
       <CurrentUserContext.Provider value={currentUser}>
-        <Header 
+        <Header
           isLoggedIn={isLoggedIn}
           userEmail={userEmail}
           onSignOut={handleSignOut}
           isLoading={isLoading}
         />
         <Switch>
-          <ProtectedRoute exact path="/"
+          <ProtectedRoute
+            exact
+            path="/"
             component={Main}
             isLoggedIn={isLoggedIn}
             onEditProfile={handleEditProfileClick}
@@ -283,16 +293,12 @@ function App() {
           </Route>
 
           <Route path="/sign-in">
-            <Login 
-              onLogin={handleLogin} 
-              isLoading={isLoading}
-              />
+            <Login onLogin={handleLogin} isLoading={isLoading} />
           </Route>
 
           <Route>
             <Redirect to={!isLoggedIn ? "/sign-in" : "/"} />
           </Route>
-
         </Switch>
 
         <Footer isLoggedIn={isLoggedIn} />
@@ -328,7 +334,7 @@ function App() {
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
-        <InfoToolTip 
+        <InfoToolTip
           isOpen={isInfoToolTipPopupOpen}
           onClose={closeInfoToolTipPopup}
           isSuccess={isSuccessInfoToolTip}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Spinner = React.memo(({ isLoading }) => {
   return (
@@ -9,7 +9,7 @@ const Spinner = React.memo(({ isLoading }) => {
         </div>
       </div>
     )
-  )
-})
+  );
+});
 
 export default Spinner;
