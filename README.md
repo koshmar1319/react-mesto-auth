@@ -8,4 +8,4 @@
 
 Добавлена регистрация/авторизация пользователя
 
-[Ссылка на сайт :arrow_lower_right:](https://koshmar1319.github.io/mesto-react/)
+[Ссылка на сайт :arrow_lower_right:](https://koshmar1319.github.io/react-mesto-auth/)

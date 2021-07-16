@@ -1,7 +1,8 @@
 class Api {
-  constructor(options) {
-    this._token = options.token;
-    this._groupID = options.groupID;
+  constructor({groupID, token, authUrl}) {
+    this._groupID = groupID;
+    this._token = token;
+    this._authUrl = authUrl;
   }
 
   getUserInfo() {
@@ -98,7 +99,8 @@ class Api {
 
 const api = new Api({
   token: "23cb390e-6742-419b-8dec-601afe24420f",
-  groupID: "cohort-22"
+  groupID: "cohort-22",
+  authUrl: "https://auth.nomoreparties.co"
 });
 
 export default api;

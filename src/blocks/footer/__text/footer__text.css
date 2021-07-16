@@ -12,7 +12,6 @@
 
 @media (max-width: 480px){
   .footer__text{
-    text-align: left;
     font-size: 14px;
     line-height: 17px;
     display: block;
