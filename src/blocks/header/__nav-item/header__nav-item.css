@@ -1,13 +1,13 @@
-.header__nav-item{
+.header__nav-item {
   margin: 0;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
   text-decoration: none;
   color: #fff;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.header__nav-item:hover{
+.header__nav-item:hover {
   opacity: 0.6;
 }

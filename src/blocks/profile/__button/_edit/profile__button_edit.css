@@ -1,21 +1,21 @@
-.profile__button_edit{
+.profile__button_edit {
   background-color: transparent;
   display: block;
   padding: 6px;
   box-sizing: border-box;
   border: 1px solid #fff;
   margin-left: 18px;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   opacity: 1;
   cursor: pointer;
 }
 
-.profile__button_edit:hover{
-  opacity: .6;
+.profile__button_edit:hover {
+  opacity: 0.6;
 }
 
-@media (max-width: 480px){
-  .profile__button_edit{
+@media (max-width: 480px) {
+  .profile__button_edit {
     margin-left: 10px;
     padding: 4px;
   }

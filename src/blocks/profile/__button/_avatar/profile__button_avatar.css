@@ -1,4 +1,4 @@
-.profile__button_avatar{
+.profile__button_avatar {
   padding: 0;
   width: 120px;
   height: 120px;
@@ -8,12 +8,12 @@
   cursor: pointer;
 }
 
-.profile__button_avatar::before{
+.profile__button_avatar::before {
   content: "";
   display: block;
   background-color: #000;
   position: absolute;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   top: 0;
   left: 0;
   right: 0;
@@ -21,7 +21,7 @@
   opacity: 0;
 }
 
-.profile__button_avatar:hover::before{
+.profile__button_avatar:hover::before {
   background-image: url(../../../../images/avatar-edit.svg);
   background-repeat: no-repeat;
   background-position: center center;

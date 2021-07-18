@@ -1,4 +1,4 @@
-.header__email{
+.header__email {
   margin: 0;
   padding-right: 24px;
   font-size: 18px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .header__email{
+  .header__email {
     padding-right: 0;
   }
 }

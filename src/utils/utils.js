@@ -1,5 +1,5 @@
 const authSettings = {
-  baseUrl: "https://auth.nomoreparties.co"
-}
+  baseUrl: "https://auth.nomoreparties.co",
+};
 
-export {authSettings};
+export { authSettings };

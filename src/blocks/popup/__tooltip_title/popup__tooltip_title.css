@@ -1,4 +1,4 @@
-.popup__tooltip_title{
+.popup__tooltip_title {
   color: #000;
   display: block;
   margin: 0 auto;
@@ -9,8 +9,8 @@
   line-height: 29px;
 }
 
-@media (max-width: 570px){
-  .popup__tooltip_title{
+@media (max-width: 570px) {
+  .popup__tooltip_title {
     font-size: 20px;
     line-height: 24px;
   }

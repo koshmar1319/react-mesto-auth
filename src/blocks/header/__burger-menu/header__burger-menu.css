@@ -1,4 +1,4 @@
-.header__burger-menu{
+.header__burger-menu {
   height: 24px;
   display: none;
   flex-direction: column;
@@ -7,12 +7,12 @@
   cursor: pointer;
 }
 
-.header__burger-menu:hover{
+.header__burger-menu:hover {
   opacity: 0.6;
 }
 
 @media (max-width: 480px) {
-  .header__burger-menu{
+  .header__burger-menu {
     display: flex;
     margin-right: 30px;
   }

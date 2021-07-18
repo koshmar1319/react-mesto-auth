@@ -1,44 +1,19 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { useFormAndValidation } from "../utils/useFormAndValidation";
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, buttonText }) {
-  const inputRef = React.useRef();
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation();
 
-  const [linkInputValid, setLinkInputValid] = React.useState(true);
-  const [linkErrorMessage, setLinkErrorMessage] = React.useState("");
-  const [buttonState, setButtonState] = React.useState(false);
-  const [linkOriginalState, setLinkOriginalState] = React.useState(true);
+  React.useEffect(() => {
+    resetForm({ link: "" });
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar({ avatar: inputRef.current.value });
+    onUpdateAvatar({ avatar: values.link });
   }
-
-  function handleChange(e) {
-    if (!e.target.validity.valid) {
-      setLinkOriginalState(false);
-      setLinkInputValid(false);
-      setLinkErrorMessage(e.target.validationMessage);
-    } else {
-      setLinkOriginalState(false);
-      setLinkInputValid(true);
-    }
-  }
-
-  React.useEffect(() => {
-    setLinkOriginalState(true);
-    setLinkInputValid(true);
-    setButtonState(false);
-    inputRef.current.value = "";
-  }, [isOpen]);
-
-  React.useEffect(() => {
-    if (linkInputValid && !linkOriginalState) {
-      setButtonState(true);
-    } else {
-      setButtonState(false);
-    }
-  }, [linkInputValid, linkOriginalState]);
 
   return (
     <PopupWithForm
@@ -47,11 +22,11 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, buttonText }) {
       btnName="popup-upd__btn"
       title="Обновить аватар"
       name="update"
-      buttonText={buttonText}
+      buttonText={isLoading ? "Сохранение . . ." : "Сохранить"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonState={buttonState}
+      buttonState={isValid}
     >
       <div className="popup__area">
         <input
@@ -59,17 +34,17 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, buttonText }) {
           type="url"
           name="link"
           placeholder="Ссылка на аватар"
-          ref={inputRef}
+          value={values.link || ""}
           onChange={handleChange}
           required
         />
         <span
           className={`popup__input-error popup-upd__input-error ${
-            !linkInputValid ? "popup__input-error_active" : ""
+            errors.link ? "popup__input-error_active" : ""
           }`}
           id="popup-upd-error"
         >
-          {linkErrorMessage}
+          {errors.link}
         </span>
       </div>
     </PopupWithForm>

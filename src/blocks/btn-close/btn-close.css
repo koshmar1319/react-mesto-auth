@@ -1,4 +1,4 @@
-.btn-close{
+.btn-close {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -7,15 +7,15 @@
   border: none;
   outline: none;
   background-color: transparent;
-  background-image: url('../../images/close-icon.svg');
+  background-image: url("../../images/close-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
   transform: rotate(45deg);
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   padding: 0;
 }
 
-.btn-close:hover{
+.btn-close:hover {
   opacity: 0.6;
 }

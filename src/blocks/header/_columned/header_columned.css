@@ -1,4 +1,4 @@
-.header_columned{
+.header_columned {
   flex-direction: column-reverse;
   min-height: unset;
   justify-content: center;
@@ -7,8 +7,8 @@
   width: 100%;
 }
 
-@media (max-width: 480px){
-  .header_columned{
+@media (max-width: 480px) {
+  .header_columned {
     margin-bottom: 0;
   }
 }

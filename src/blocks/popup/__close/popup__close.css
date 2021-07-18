@@ -1,4 +1,4 @@
-.popup__close{
+.popup__close {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -9,16 +9,16 @@
   right: -30px;
   font-size: 45px;
   cursor: pointer;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   opacity: 1;
 }
 
-.popup__close:hover{
-  opacity: .6;
+.popup__close:hover {
+  opacity: 0.6;
 }
 
-@media (max-width: 570px){
-  .popup__close{
+@media (max-width: 570px) {
+  .popup__close {
     top: -45px;
     right: 0;
     font-size: 36px;

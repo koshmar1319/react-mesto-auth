@@ -14,7 +14,7 @@ function AuthForm({ title, name, buttonText, onSubmit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onSubmit({ email: values.email, password: values.password });
+    onSubmit(values);
   }
 
   return (

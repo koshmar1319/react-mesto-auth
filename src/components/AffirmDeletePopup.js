@@ -6,7 +6,7 @@ function AffirmDeletePopup({
   onClose,
   card,
   onSubmitDelete,
-  buttonText,
+  isLoading,
 }) {
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,7 +20,7 @@ function AffirmDeletePopup({
       btnName="popup__btn_yes"
       title="Вы уверены?"
       name="delete"
-      buttonText={buttonText}
+      buttonText={isLoading ? "Удаление . . ." : "Да"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
